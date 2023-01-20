@@ -1,9 +1,7 @@
 import sqlite3
 
-
 class Films:
-
-    def connection(self, query: str) -> list[dict]:
+    def connection(query: str) -> list[dict]:
         """
         получает результат список словатей с фильмами
         """
@@ -18,7 +16,8 @@ class Films:
                 result_list.append(res_dict)
             return result_list
 
-    def get_by_title(self, title: str) -> list[dict]:
+
+    def get_by_title(title: str) -> list[dict]:
         """
         самый свежий фильм по названию
         """
@@ -29,10 +28,11 @@ class Films:
                             ORDER BY release_year DESC
                             LIMIT 1
         """
-        result = self.connection(query)
+        result = connection(query)
         return result
 
-    def get_by_range(self, first_year: int, second_year: int) -> list[dict]:
+
+    def get_by_range(first_year: int, second_year: int) -> list[dict]:
         """
         Возвращает фильмы за период
         """
@@ -42,10 +42,11 @@ class Films:
                         WHERE release_year BETWEEN {first_year} AND {second_year}
                         LIMIT 100
         """
-        result = self.connection(query)
+        result = connection(query)
         return result
 
-    def get_by_rating(self, rating: str) -> list[dict]:
+
+    def get_by_rating(rating: str) -> list[dict]:
         """
         фильмы по рейтингу
         """
@@ -55,10 +56,11 @@ class Films:
                     WHERE rating != ''
                     AND rating IN ({rating})
         """
-        result = self.connection(query)
+        result = connection(query)
         return result
 
-    def get_by_genre(self, genre: str) -> list[dict]:
+
+    def get_by_genre(genre: str) -> list[dict]:
         """
         10 самых свежих фильмов в жанре
         """
@@ -69,5 +71,9 @@ class Films:
                     ORDER BY release_year DESC
                     LIMIT 10
         """
-        result = self.connection(querty)
+        result = connection(querty)
         return result
+
+
+
+

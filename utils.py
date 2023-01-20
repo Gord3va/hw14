@@ -1,6 +1,6 @@
 import sqlite3
 
-
+#все функции
 class Films:
 
     def connection(self, query: str) -> list[dict]:
